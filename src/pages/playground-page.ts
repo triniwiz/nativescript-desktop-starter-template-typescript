@@ -1,6 +1,6 @@
 import { EventData, NavigatedData, Observable, Page } from '@nativescript/core';
 import { View } from '@triniwiz/nativescript-masonkit';
-import { render, text, view, viewById } from '../ui';
+import { button, render, text, view, viewById } from '../ui';
 
 // Class names must appear in full so Tailwind can find them.
 const justifyOptions = [
@@ -124,11 +124,8 @@ export function onNavigatingTo(args: NavigatedData) {
 }
 
 function renderOptions() {
-  const option = (label: string, active: boolean, onTap: () => void) => {
-    const button = text(`rounded-xl px-4 py-2 text-sm font-semibold ${segmentClass(active)}`, label);
-    button.on('tap', onTap);
-    return button;
-  };
+  const option = (label: string, active: boolean, onTap: () => void) =>
+    button(`rounded-xl px-4 py-2 text-sm font-semibold ${segmentClass(active)}`, label, onTap);
 
   render(viewById(page, 'options'), [
     ...justifyOptions.map(({ label, value }) =>

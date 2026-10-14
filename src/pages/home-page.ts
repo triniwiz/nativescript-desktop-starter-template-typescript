@@ -28,8 +28,8 @@ const features = [
   },
   {
     icon: '</>',
-    title: 'View and Text',
-    body: 'Two native building blocks, <m:View> and <m:Text>, make up this whole screen.',
+    title: 'View, Text, Button',
+    body: 'Three native building blocks, <m:View>, <m:Text> and <m:Button>, make up this whole screen.',
     tint: 'bg-fuchsia-100 text-fuchsia-600 dark:bg-fuchsia-500/20 dark:text-fuchsia-300',
   },
   {

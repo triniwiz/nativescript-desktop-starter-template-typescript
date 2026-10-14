@@ -6,7 +6,7 @@ import * as MasonKit from '@triniwiz/nativescript-masonkit';
 MasonKit.View.preflight = true;
 
 // Lets XML pages use MasonKit's elements through
-// `xmlns:m="@triniwiz/nativescript-masonkit"` (<m:View>, <m:Text>, <m:Scroll>).
+// `xmlns:m="@triniwiz/nativescript-masonkit"` (<m:View>, <m:Text>, <m:Button>, <m:Scroll>).
 globalThis.registerModule('@triniwiz/nativescript-masonkit', () => MasonKit);
 
 Application.run({ moduleName: 'app-root' });

@@ -3,10 +3,11 @@ import { typescriptConfig } from '@nativescript/vite/typescript';
 import { protect, restore } from './postcss-masonkit.mjs';
 import { masonkitSingleInstance } from './masonkit-hmr.mjs';
 import { escapedSelectorCommas } from './postcss-selector-commas.mjs';
+import { stableActivityChunk } from './android-workarounds.mjs';
 
 export default defineConfig(({ mode }) =>
   mergeConfig(typescriptConfig({ mode }), {
-    plugins: [masonkitSingleInstance()],
+    plugins: [masonkitSingleInstance(), stableActivityChunk()],
     optimizeDeps: {
       // MasonKit must load as a single instance over the HMR server. If Vite
       // pre-bundles a subpath (e.g. `/web`), that copy is routed to the vendor

@@ -11,11 +11,11 @@
           class="text-base text-white/80"
           textContent="Flexbox and CSS Grid powered by a Rust layout engine, styled with Tailwind on iOS, Android and Windows." />
         <m:View class="flex flex-row flex-wrap gap-3 pt-2">
-          <m:Text
+          <m:Button
             class="btn bg-white text-indigo-600 active:bg-indigo-50"
             textContent="Open the playground →"
             tap="openPlayground" />
-          <m:Text
+          <m:Button
             class="btn bg-white/15 text-white active:bg-white/30"
             textContent="{{ tapLabel }}"
             tap="countTap" />

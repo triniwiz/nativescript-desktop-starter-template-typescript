@@ -2,7 +2,7 @@
 
 A NativeScript TypeScript starter that runs on Windows, iOS and Android. Pages
 are XML with TypeScript code-behind. Layout uses
-[MasonKit](https://github.com/triniwiz/nativescript-mason)'s `View` and `Text`
+[MasonKit](https://github.com/triniwiz/nativescript-mason)'s `View`, `Text` and `Button`
 (Flexbox and CSS Grid), and styling uses Tailwind CSS v4.
 
 ## Prerequisites
@@ -46,20 +46,23 @@ Use npm. `package.json` relies on npm `overrides`.
 | `src/app.css` | Tailwind, plus the `dark:`, `ios:`, `android:`, `windows:`, `phone:` and `tablet:` variants. |
 | `src/pages/home-page.xml` / `.ts` | The home screen and its code-behind. |
 | `src/pages/playground-page.xml` / `.ts` | Flexbox and Grid examples. |
-| `src/ui.ts` | `view()` and `text()` helpers for building MasonKit views from data. |
+| `src/ui.ts` | `view()`, `text()` and `button()` helpers for building MasonKit views from data. |
 | `postcss-masonkit.mjs` | Keeps the Tailwind layout utilities (`flex`, `grid`, `gap-*`, `max-w-*`, `absolute`, ...) that NativeScript's Tailwind plugin would otherwise remove. |
 
 ## Tips
 
 - **Elements:** declare the MasonKit namespace on the page, then use
-  `<m:View>` for boxes and `<m:Text>` for text. `<m:Scroll>` scrolls its
-  content.
+  `<m:View>` for boxes, `<m:Text>` for text and `<m:Button>` for buttons.
+  Each page's root is an `<m:Scroll>`:
 
   ```xml
   <Page xmlns:m="@triniwiz/nativescript-masonkit">
-    <m:View class="flex flex-col gap-2 p-4">
-      <m:Text class="text-2xl font-bold" textContent="{{ title }}" tap="onTap" />
-    </m:View>
+    <m:Scroll>
+      <m:View class="flex flex-col gap-2 p-4">
+        <m:Text class="text-2xl font-bold" textContent="{{ title }}" />
+        <m:Button class="rounded-xl bg-indigo-500 px-4 py-2 text-white" textContent="Go" tap="onTap" />
+      </m:View>
+    </m:Scroll>
   </Page>
   ```
 
@@ -101,6 +104,10 @@ Use npm. `package.json` relies on npm `overrides`.
   code-behind into the app entry, so MasonKit loads twice and the app fails to
   start ("Cannot redefine property").
 
+- Pages scroll with `<m:Scroll>` rather than `<m:View class="overflow-y-auto">`.
+  A `View` with `overflow-y` scrolls on iOS, but MasonKit's Android `View`
+  doesn't scroll yet.
+
 ## Temporary workarounds
 
 These can be removed once the fixes are released:
@@ -116,6 +123,10 @@ These can be removed once the fixes are released:
 - `viewById()` in `src/ui.ts` casts to MasonKit's `View`, because MasonKit's
   typings declare their own `Style` and its views don't type check as core
   views.
+- `android-workarounds.mjs` names core's Android activity chunk without a
+  hash. The generated Java activity loads it by the name it had at the last
+  native build, so after a rebuild that renamed it, Android started the old
+  chunk and crashed ("isEmbedded is not a function").
 - `masonkit-hmr.mjs` stops MasonKit from loading twice during HMR. It only
   runs on the dev server, so it does nothing until HMR is back on.
 - `postcss-selector-commas.mjs` makes classes with a comma, like

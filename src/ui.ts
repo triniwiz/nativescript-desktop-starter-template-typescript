@@ -1,13 +1,14 @@
 import { Page } from '@nativescript/core';
-import { Text, View } from '@triniwiz/nativescript-masonkit';
+import { Button, Text, View } from '@triniwiz/nativescript-masonkit';
 
 /**
  * Tiny helpers for building MasonKit views from data, the code equivalent of
- * `<m:View class="...">` and `<m:Text class="..." textContent="..." />`.
+ * `<m:View class="...">`, `<m:Text class="..." textContent="..." />` and
+ * `<m:Button class="..." textContent="..." tap="..." />`.
  * Class names must appear in full so Tailwind can find them.
  */
 
-export type Node = View | Text;
+export type Node = View | Text | Button;
 
 export function view(className: string, ...children: Node[]): View {
   const result = new View();
@@ -22,6 +23,14 @@ export function text(className: string, textContent: string | number): Text {
   const result = new Text();
   result.className = className;
   result.textContent = String(textContent);
+  return result;
+}
+
+export function button(className: string, textContent: string, onTap: () => void): Button {
+  const result = new Button();
+  result.className = className;
+  result.textContent = textContent;
+  result.on('tap', onTap);
   return result;
 }
 
