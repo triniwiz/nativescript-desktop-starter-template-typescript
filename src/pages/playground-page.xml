@@ -1,0 +1,92 @@
+<Page xmlns:m="@triniwiz/nativescript-masonkit" actionBarHidden="true" navigatingTo="onNavigatingTo">
+  <m:Scroll>
+    <m:View class="mx-auto flex w-full max-w-5xl flex-col gap-6 px-5 py-8">
+      <!-- Header -->
+      <m:View class="flex flex-row items-center gap-4">
+        <m:Text
+          class="rounded-2xl bg-white px-4 py-2 text-base font-semibold text-indigo-600 active:bg-indigo-50 dark:bg-slate-900 dark:text-indigo-300"
+          textContent="← Back"
+          tap="goBack" />
+        <m:View class="flex flex-1 flex-col">
+          <m:Text class="eyebrow" textContent="Playground" />
+          <m:Text class="text-3xl font-bold text-slate-900 dark:text-white" textContent="Layout, live" />
+        </m:View>
+      </m:View>
+
+      <!-- Flexbox -->
+      <m:View class="card flex flex-col gap-4">
+        <m:View class="flex flex-col gap-1">
+          <m:Text class="text-xl font-semibold text-slate-900 dark:text-white" textContent="Flexbox" />
+          <m:Text
+            class="text-sm text-slate-500 dark:text-slate-400"
+            textContent="Tap an option to swap the classes on the container below." />
+        </m:View>
+
+        <m:View id="options" class="flex flex-row flex-wrap gap-2" />
+
+        <m:View class="{{ demoClass }}">
+          <m:View class="flex size-14 items-center justify-center rounded-xl bg-indigo-500">
+            <m:Text class="text-lg font-bold text-white" textContent="1" />
+          </m:View>
+          <m:View class="flex size-14 items-center justify-center rounded-xl bg-indigo-500">
+            <m:Text class="text-lg font-bold text-white" textContent="2" />
+          </m:View>
+          <m:View class="flex size-14 items-center justify-center rounded-xl bg-indigo-500">
+            <m:Text class="text-lg font-bold text-white" textContent="3" />
+          </m:View>
+        </m:View>
+
+        <m:Text
+          class="font-mono text-sm text-indigo-600 dark:text-indigo-300"
+          textContent="{{ demoCode }}" />
+      </m:View>
+
+      <!-- Grid -->
+      <m:View class="card flex flex-col gap-4">
+        <m:View class="flex flex-col gap-1">
+          <m:Text class="text-xl font-semibold text-slate-900 dark:text-white" textContent="CSS Grid" />
+          <m:Text
+            class="text-sm text-slate-500 dark:text-slate-400"
+            textContent="auto-fill columns with col-span and row-span. Resize the window to watch it reflow." />
+        </m:View>
+        <m:View
+          id="tiles"
+          class="grid grid-flow-row-dense grid-cols-[repeat(auto-fill,minmax(120,1fr))] auto-rows-[96] gap-3" />
+      </m:View>
+
+      <!-- Wrapping -->
+      <m:View class="card flex flex-col gap-4">
+        <m:View class="flex flex-row items-center gap-3">
+          <m:View class="flex flex-1 flex-col gap-1">
+            <m:Text class="text-xl font-semibold text-slate-900 dark:text-white" textContent="Wrapping" />
+            <m:Text
+              class="text-sm text-slate-500 dark:text-slate-400"
+              textContent="{{ tagSummary }}" />
+          </m:View>
+          <m:View
+            class="flex size-10 items-center justify-center rounded-full bg-slate-100 active:bg-slate-200 dark:bg-slate-800"
+            tap="removeTag">
+            <m:Text class="text-lg font-bold text-slate-700 dark:text-slate-300" textContent="−" />
+          </m:View>
+          <m:View
+            class="flex size-10 items-center justify-center rounded-full bg-indigo-500 active:bg-indigo-600"
+            tap="addTag">
+            <m:Text class="text-lg font-bold text-white" textContent="+" />
+          </m:View>
+        </m:View>
+        <m:View id="tags" class="flex flex-row flex-wrap gap-2" />
+      </m:View>
+
+      <!-- Palette -->
+      <m:View class="card flex flex-col gap-4">
+        <m:View class="flex flex-col gap-1">
+          <m:Text class="text-xl font-semibold text-slate-900 dark:text-white" textContent="Palette" />
+          <m:Text
+            class="text-sm text-slate-500 dark:text-slate-400"
+            textContent="Square swatches with aspect-square, straight from Tailwind's colour scale." />
+        </m:View>
+        <m:View id="palette" class="grid grid-cols-[repeat(auto-fill,minmax(88,1fr))] gap-3" />
+      </m:View>
+    </m:View>
+  </m:Scroll>
+</Page>

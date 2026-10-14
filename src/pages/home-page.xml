@@ -1,0 +1,51 @@
+<Page xmlns:m="@triniwiz/nativescript-masonkit" actionBarHidden="true" navigatingTo="onNavigatingTo">
+  <m:Scroll>
+    <m:View class="mx-auto flex w-full max-w-5xl flex-col gap-6 px-5 py-8">
+      <!-- Hero -->
+      <m:View class="bg-hero flex flex-col gap-4 rounded-3xl p-8">
+        <m:Text
+          class="self-start rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white"
+          textContent="NativeScript × MasonKit" />
+        <m:Text class="text-4xl font-bold text-white" textContent="Native apps, laid out like the web." />
+        <m:Text
+          class="text-base text-white/80"
+          textContent="Flexbox and CSS Grid powered by a Rust layout engine, styled with Tailwind on iOS, Android and Windows." />
+        <m:View class="flex flex-row flex-wrap gap-3 pt-2">
+          <m:Text
+            class="btn bg-white text-indigo-600 active:bg-indigo-50"
+            textContent="Open the playground →"
+            tap="openPlayground" />
+          <m:Text
+            class="btn bg-white/15 text-white active:bg-white/30"
+            textContent="{{ tapLabel }}"
+            tap="countTap" />
+        </m:View>
+      </m:View>
+
+      <!-- Stats: each card is at least 160 wide, so they wrap on phones -->
+      <m:View id="stats" class="flex flex-row flex-wrap gap-4" />
+
+      <!-- Features: as many 240-wide columns as fit -->
+      <m:View class="flex flex-col gap-4">
+        <m:View class="flex flex-col gap-1">
+          <m:Text class="eyebrow" textContent="What's inside" />
+          <m:Text class="text-2xl font-bold text-slate-900 dark:text-white" textContent="Everything you need to start" />
+        </m:View>
+        <m:View id="features" class="grid grid-cols-[repeat(auto-fill,minmax(240,1fr))] gap-4" />
+      </m:View>
+
+      <!-- Next steps -->
+      <m:View class="card flex flex-col gap-4">
+        <m:View class="flex flex-col gap-1">
+          <m:Text class="eyebrow" textContent="Next steps" />
+          <m:Text class="text-2xl font-bold text-slate-900 dark:text-white" textContent="Make it yours" />
+        </m:View>
+        <m:View id="steps" class="flex flex-col gap-4" />
+      </m:View>
+
+      <m:View class="flex flex-col items-center py-2">
+        <m:Text class="text-xs text-slate-400 dark:text-slate-500" textContent="{{ footer }}" />
+      </m:View>
+    </m:View>
+  </m:Scroll>
+</Page>
