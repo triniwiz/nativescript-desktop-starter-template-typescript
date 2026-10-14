@@ -53,7 +53,8 @@ Use npm. `package.json` relies on npm `overrides`.
 
 - **Elements:** declare the MasonKit namespace on the page, then use
   `<m:View>` for boxes, `<m:Text>` for text and `<m:Button>` for buttons.
-  Each page's root is an `<m:Scroll>`:
+  `<m:View>` doesn't scroll; wrap content that should scroll in `<m:Scroll>`,
+  as each page's root does:
 
   ```xml
   <Page xmlns:m="@triniwiz/nativescript-masonkit">
@@ -103,10 +104,6 @@ Use npm. `package.json` relies on npm `overrides`.
   and restarts the app. With HMR on, `@nativescript/vite` bundles the pages'
   code-behind into the app entry, so MasonKit loads twice and the app fails to
   start ("Cannot redefine property").
-
-- Pages scroll with `<m:Scroll>` rather than `<m:View class="overflow-y-auto">`.
-  A `View` with `overflow-y` scrolls on iOS, but MasonKit's Android `View`
-  doesn't scroll yet.
 
 ## Temporary workarounds
 
