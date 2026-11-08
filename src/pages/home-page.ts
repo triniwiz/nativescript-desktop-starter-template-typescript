@@ -47,7 +47,7 @@ const features = [
   {
     icon: '◎',
     title: 'One codebase',
-    body: 'The same pages run on iOS, Android and Windows.',
+    body: 'The same pages run on iOS, Android, Windows and Linux.',
     tint: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-300',
   },
 ];
