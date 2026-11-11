@@ -133,12 +133,3 @@ These can be removed once the fixes are released:
 - `viewById()` in `src/ui.ts` casts to MasonKit's `View`, because MasonKit's
   typings declare their own `Style` and its views don't type check as core
   views.
-- `android-workarounds.mjs` names core's Android activity chunk without a
-  hash. The generated Java activity loads it by the name it had at the last
-  native build, so after a rebuild that renamed it, Android started the old
-  chunk and crashed ("isEmbedded is not a function").
-- `masonkit-hmr.mjs` stops MasonKit from loading twice during HMR. It only
-  runs on the dev server, so it does nothing until HMR is back on.
-- `postcss-selector-commas.mjs` makes classes with a comma, like
-  `grid-cols-[repeat(auto-fill,minmax(240,1fr))]`, match
-  ([NativeScript/NativeScript#11463](https://github.com/NativeScript/NativeScript/pull/11463)).
